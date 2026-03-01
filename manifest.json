@@ -1,0 +1,17 @@
+{
+  "name": "Color Cove",
+  "short_name": "Color Cove",
+  "description": "Kids coloring app with tap-to-fill pages.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#95d5ff",
+  "theme_color": "#95d5ff",
+  "icons": [
+    {
+      "src": "Assets/90_Valentines.PNG",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#95d5ff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Color Cove" />
+    <title>Color Cove - Kids Coloring App</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="Assets/90_Valentines.PNG" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Creative playtime</p>
+          <h1>Color Cove</h1>
+          <p class="subtitle">Choose a coloring sheet, pick a color, then click a shape to fill it.</p>
+        </div>
+        <div class="actions">
+          <button id="undoBtn" class="tool-btn" type="button">Undo</button>
+          <button id="redoBtn" class="tool-btn" type="button">Redo</button>
+          <button id="clearBtn" class="tool-btn danger" type="button">Clear Page</button>
+          <button id="saveBtn" class="tool-btn accent" type="button">Save PNG</button>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <aside class="panel">
+          <h2>Coloring Pages</h2>
+          <div id="pageList" class="page-list" aria-label="Coloring pages"></div>
+
+          <h2>Palette</h2>
+          <div id="palette" class="palette" aria-label="Color palette"></div>
+
+          <label class="custom-color">
+            <span>Custom color</span>
+            <input id="colorPicker" type="color" value="#ff5d8f" />
+          </label>
+
+          <h2>Tips</h2>
+          <ul>
+            <li>Click inside any closed area to fill that whole shape.</li>
+            <li>The black outlines act as borders for fill regions.</li>
+            <li>Each page keeps its own fill progress.</li>
+          </ul>
+        </aside>
+
+        <section class="canvas-wrap">
+          <div class="canvas-card">
+            <div id="stage" class="stage" aria-label="Coloring canvas">
+              <canvas id="paintCanvas"></canvas>
+            </div>
+            <p id="statusMsg" class="status-msg" aria-live="polite"></p>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js").catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>

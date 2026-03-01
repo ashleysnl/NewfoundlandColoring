@@ -1,0 +1,288 @@
+:root {
+  --bg-1: #95d5ff;
+  --bg-2: #f7ffd6;
+  --ink: #1e1f33;
+  --card: #ffffffd9;
+  --shadow: 0 20px 50px rgba(34, 33, 74, 0.15);
+  --active: #ff4f8b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Fredoka", sans-serif;
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: none;
+  background:
+    radial-gradient(circle at 12% 0%, #fff5a8 0, #fff5a8 12%, transparent 12%),
+    radial-gradient(circle at 88% 10%, #ffd2e7 0, #ffd2e7 10%, transparent 10%),
+    linear-gradient(155deg, var(--bg-1) 0%, #c7f2ff 42%, var(--bg-2) 100%);
+}
+
+.app-shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding:
+    calc(1rem + env(safe-area-inset-top))
+    calc(1rem + env(safe-area-inset-right))
+    calc(1rem + env(safe-area-inset-bottom))
+    calc(1rem + env(safe-area-inset-left));
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Baloo 2", cursive;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 0.95;
+}
+
+.subtitle {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+  max-width: 62ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: flex-end;
+}
+
+.tool-btn {
+  border: 0;
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #ffffff;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 140ms ease, filter 140ms ease;
+}
+
+.tool-btn:hover,
+.tool-btn:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+  outline: none;
+}
+
+.tool-btn:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tool-btn.accent {
+  background: #ff9f1c;
+}
+
+.tool-btn.danger {
+  background: #ff5c79;
+  color: #fff;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1rem;
+}
+
+.panel,
+.canvas-card {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  border: 1px solid #ffffffaa;
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+}
+
+.panel {
+  padding: 1rem;
+}
+
+.panel h2 {
+  margin: 0.15rem 0 0.6rem;
+  font-family: "Baloo 2", cursive;
+  font-size: 1.35rem;
+}
+
+.page-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-bottom: 0.8rem;
+}
+
+.page-btn {
+  border: 3px solid #ffffff;
+  border-radius: 16px;
+  background: #fff;
+  padding: 0.25rem;
+  min-height: 44px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #00000012;
+  text-align: left;
+}
+
+.page-btn img {
+  width: 100%;
+  height: 82px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.page-btn span {
+  display: block;
+  padding: 0.2rem 0.2rem 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.page-btn[aria-pressed="true"] {
+  border-color: var(--active);
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.swatch {
+  width: 100%;
+  min-height: 44px;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  border: 3px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #00000018;
+}
+
+.swatch[aria-pressed="true"] {
+  border-color: var(--active);
+}
+
+.custom-color {
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.28rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.custom-color input {
+  border: none;
+  width: 100%;
+  height: 38px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+  cursor: pointer;
+}
+
+.panel ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+}
+
+.canvas-wrap {
+  min-width: 0;
+}
+
+.canvas-card {
+  padding: 0.7rem;
+}
+
+.stage {
+  width: 100%;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 2px solid #00000010;
+}
+
+#paintCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#paintCanvas {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  cursor: crosshair;
+}
+
+.status-msg {
+  min-height: 1.2rem;
+  margin: 0.45rem 0.2rem 0;
+  font-size: 0.85rem;
+  color: #2f3a56;
+}
+
+.status-msg.error {
+  color: #b4233c;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    order: 2;
+  }
+
+  .canvas-wrap {
+    order: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+
+  .palette {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}

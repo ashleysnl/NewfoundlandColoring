@@ -404,6 +404,10 @@ body {
   padding: 1rem;
 }
 
+.a2hs-overlay[hidden] {
+  display: none;
+}
+
 .a2hs-modal {
   border: 1px solid var(--line);
   border-radius: 18px;
